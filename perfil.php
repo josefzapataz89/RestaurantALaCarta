@@ -2,6 +2,7 @@
 session_start();
 include('conex.php');
   $link=Conectar();
+
 if($_SESSION['nombre_ususario']=="")
 {
 	?>
@@ -28,7 +29,23 @@ else
   <?php 
 }
 }
-$usuario=$_SESSION['id'];;
+
+$consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SESSION["id"]. "'");
+              $suma=0;
+              $contador=0;
+              $comentarios;
+              while($campos = mysql_fetch_array($consulta))
+              {
+                $contador=$contador+1;
+                $calificacion = $campos[2];
+                $usuario1 = $campos[3];
+                $suma=$suma+$campos[2];
+
+              }
+              $votos = $suma/$contador;
+
+              
+$usuario=$_SESSION['id'];
  $result = mysql_query("select m.ruta ruta, r.nombre nombre, r.descripcion descripcion, r.direccion direccion, r.telefono telefono, r.email email, r.pagina_web pagina
 						from restaurante r join multimedia m
 						on(r.id = m.restaurante_id)
@@ -45,15 +62,23 @@ $accion= mysql_fetch_array($result);
                 $email = $accion['email'];
                 $pagina = $accion['pagina'];
 
- ?>
+                if(isset($_POST["comentarios"]))
+                {
+                ?>
+                <script type="text/javascript">
+                document.location="comentarios.php";
+                </script>
+                <?php
+                }
+
+                ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
          <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
-         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />  
-         <link type="text/css" rel="stylesheet" href="datepicket.css" />       
+      
          <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />       
          <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
          <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
@@ -126,11 +151,11 @@ line-height:0px;
         <ul>
           <!-- CSS Tabs -->
           <li class="flecha"><a href="perfil.php"><span class="Estilo2">Perfil</span></a><div id="punta"></div></li>
-          <li ><a href="platos_usuario.php"><span>Platos</span></a>
-		  </li>
-          <li><a href="NuevoPlato.php"><span>Nuevo plato</span></a></li></ul>
+          <li ><a href="platos_usuario.php"><span>Platos</span></a></li>
+          <li><a href="NuevoPlato.php"><span>Nuevo plato</span></a></li>
+        </ul>
 		  
-		  </div>
+</div>
 		  
 </div> 
 
@@ -152,9 +177,12 @@ line-height:0px;
                        <p><b>Telefono:</b> </p><p><?php echo $telefono; ?></p>
                        <p><b>Email: </b></p><p><?php echo $email; ?></p>
                        <p><b>Sitio Web: </b></p><p><?php echo $pagina; ?></p>
+
                </div>
        </div>
               <br>
+
+
 
                <div class="input select rating-f estrella">
           <label for="calificacion">Calificación </label>          
@@ -166,6 +194,10 @@ line-height:0px;
                 <option value="5">5</option>
             </select>
         </div>
+<br>
+<form action="" class="form-inline" id="inicio_sesion" method="post" name="form1">
+  <div id="boton_e"><input name="comentarios" type="submit" class="button tam_button" value="Comentarios" style="border:none" /></div>
+</form>
 
            </div>
 
@@ -177,8 +209,9 @@ line-height:0px;
 <script src="./plugins/jquery.barrating.js"></script>
 <script>
 
+
     $(function () {
-      $('#calificacion').barrating({ initialRating: 4, readonly: true, showSelectedRating:false });
+      $('#calificacion').barrating({ initialRating: <?php echo round($votos); ?>, readonly: true, showSelectedRating:false });
 
       
       
@@ -186,5 +219,6 @@ line-height:0px;
     });
 
 </script>
+
 </body>
 </html>
