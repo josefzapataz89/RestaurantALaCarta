@@ -51,7 +51,13 @@ $accion= mysql_fetch_array($result);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+         <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />  
+         <link type="text/css" rel="stylesheet" href="datepicket.css" />       
+         <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />       
+         <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
+         <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
+          type="text/css"/>
 <title>Restaurantes</title>
 <style type="text/css">
 <!--
@@ -148,11 +154,37 @@ line-height:0px;
                        <p><b>Sitio Web: </b></p><p><?php echo $pagina; ?></p>
                </div>
        </div>
+              <br>
+
+               <div class="input select rating-f estrella">
+          <label for="calificacion">Calificación </label>          
+          <select id="calificacion" name="rating" >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+
            </div>
 
+
 </div>
 </div>
 
 </div>
+<script src="./plugins/jquery.barrating.js"></script>
+<script>
+
+    $(function () {
+      $('#calificacion').barrating({ initialRating: 4, readonly: true, showSelectedRating:false });
+
+      
+      
+
+    });
+
+</script>
 </body>
 </html>
