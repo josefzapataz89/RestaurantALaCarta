@@ -1,5 +1,8 @@
 <?php 
 session_start();
+include"database.php";
+include('conex.php');
+$link=Conectar();
 
 if($_SESSION['nombre_ususario']=="")
 {
@@ -19,6 +22,8 @@ if($_SESSION['nombre_ususario']=="")
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="animate.css" />
+<script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 <title>Top 5</title>
 <style type="text/css">
 <!--
@@ -93,27 +98,45 @@ line-height:0px;
 <p class="interlineado2">&nbsp;</p>
 <p class="interlineado2" align="center"><a href="#">Nosotros</a> | <a href="#">@alacarta5</a> | <a href="#">www.facebook.com/alacarta</a></p></div>
 <div id="fondo_top5">
-<div id="nombre_numero1">Wakame Sushi Bar</div>
-	<div id="numero1"><img src="imagenes/Top5/1.png" width="300" height="211" />
-		<div id="num1"></div>
-	</div>
-	<div id="tabla_top4">
-  <table width="759" height="150" border="0" align="center">
-  <tr>
-    <td width="182" height="34" class="nombres_top4">#2 La Forchetta</td>
-    <td width="182" class="nombres_top4">#3 Brasamole</td>
-    <td width="182" class="nombres_top4">#4 AllFood</td>
-    <td width="185" class="nombres_top4">#5 Gremium</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="imagenes/Top5/2.png" /></td>
-    <td align="center"><img src="imagenes/Top5/3.png" /></td>
-    <td align="center"><img src="imagenes/Top5/4.png" /></td>
-    <td align="center"><img src="imagenes/Top5/5.png" /></td>
-  </tr>
-</table>
-	</div>
-</div>
+
+
+
+<?php 
+	$destino = '$DOCUMENT_ROOT/../imagesRestaurant/';
+	$sql = "SELECT re.id, re.nombre, SUM(calificacion) calif, m.ruta 
+			FROM comentario c, restaurante re, multimedia m 
+			WHERE re.id = c.restaurante_id AND m.restaurante_id = c.restaurante_id AND m.plato_id IS NULL 
+			GROUP BY c.restaurante_id 
+			ORDER BY calif desc LIMIT 5";
+	 $cons = mysql_query($sql) or die('MySql Error' . mysql_error());; 
+	 if($cons){
+	 	$top1 = mysql_fetch_row($cons);
+	 	echo "<div id='nombre_numero1'> <a href='infoRestaurant.php?id=".$top1[0]."'>".$top1[1]."</a></div>";
+	 		echo "<div id='numero1' class='animated zoomIn' onclick='mostrar(".$top1[0].")'><a href='infoRestaurant.php?id=".$top1[0]."'><img src='".$destino.$top1[3]."' width='300' height='211' /></a>";
+				echo "<div id='num1' class='animated tada'></div>";
+			echo "</div>";
+
+			echo "<div id='tabla_top4'>";
+				echo "<table width='759' height='150' border='0' align='center'>";
+					echo "<tr>";
+						$n = 2;
+						while ($top5 = mysql_fetch_array($cons)) {
+							echo "<td width='182' height='34' class='nombres_top4'>#2 ".$top5[1]."</td>";
+						}			    
+					echo "</tr>";
+					echo "<tr>";
+						while ($top5 = mysql_fetch_array($cons)) {
+							echo "<td align='center' class='animated zoomIn'><a href='infoRestaurant.php?id=".$top5[0]."'><img  src='".$destino.$top5[3]."' /></a></td>";
+						}			    
+					echo "</tr>";
+				echo "</table>";
+			echo "</div>";
+	 	echo "</div>";
+
+
+	 }
+	 
+?>
 </div>
 
 </div>
