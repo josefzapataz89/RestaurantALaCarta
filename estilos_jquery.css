@@ -1,0 +1,56 @@
+/* CSS Document */
+#slider {
+    width: 50% ; /* important to be same as image width */
+    height: 410px; /* important to be same as image height */
+    float: left;
+    margin-left: 6px;    
+    padding: 0;
+
+	}
+#slider img{
+    width: 124%;
+    height: 425px !important;
+    margin-left: -40px;
+    box-shadow:#000 0 5px 7px 0;
+    height: 435px;
+}
+#sliderContent {
+    width: 100%; /* important to be same as image width or wider */
+}
+.sliderImage {
+    float: left;
+    position: relative;
+	display: none;
+}
+.sliderImage span {
+    position: absolute;
+	font: 20px/20px Arial, Helvetica, sans-serif;
+    padding: 10px 13px;
+    width: 110%;
+    background-color: #000;
+	background-repeat:no-repeat;
+    filter: alpha(opacity=70);
+    -moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+    opacity: 0.7;
+    color: #ffba00;
+	text-align:right;
+    display: none;
+    margin-left: -40px;
+}
+.clear {
+	clear: both;
+}
+.sliderImage span strong {
+    font-size: 24px;
+}
+.top {
+	top: 0;
+	left: 0;
+}
+.bottom {
+	bottom: 5px;
+    left: 0;
+}
+ul { list-style-type: none;}
+

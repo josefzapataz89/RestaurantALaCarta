@@ -1,0 +1,103 @@
+#slider {
+	position: relative;
+	width: 453px;
+}
+
+#slider .viewer {
+	width: 453px;
+	height: 384px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#slider .viewer .reel {
+	display: none;
+	height: 384px;
+}
+
+#slider .viewer .reel .slide {
+	position: relative;
+	width: 53px;
+	height: 38px;
+	top:200px;
+}
+
+#slider {
+	position: relative;
+	left:120px;
+	top:25px;
+	width: 453px;
+	height: 384px;
+}
+
+#slider .button {
+	display: inline-block;
+	color: #ffffff;
+	border-radius: 0px;
+	z-index:1;
+	width: 60px;
+	height:90px;
+}
+
+
+#slider .viewer {
+	width: 453px;
+	height: 384px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+#slider .viewer .reel {
+	display: none;
+	height: 375px;
+}
+
+#slider .viewer .reel .slide {
+	position: relative;
+	width: 453px;
+	height: 385px;
+	margin: 0px auto;
+}
+
+#slider .viewer .reel h2 {
+	position: absolute;
+	top: 280px;
+	left: 0;
+	width: 453px;
+	height: 45px;
+	background: #111111;
+	text-align:left;
+	opacity: 0.85;
+	color: #ffba00;
+	font-size: 30px;
+	font:"Verdana", Arial, Helvetica, sans-serif;
+}
+
+#slider .previous-button {
+	position: absolute;
+	top: 150px;
+	border-radius:0px;
+	left: 0;
+	background-image:url(../imagenes/f2.png);
+	background-repeat:no-repeat;
+	opacity: 0.5;
+	width: 35px;
+	height:70px;
+}
+
+#slider .button:hover {
+background-color:#000000;
+opacity:0.5;
+}
+
+#slider .next-button {
+	position: absolute;
+	top: 150px;
+	left:392px;
+	border-radius:0px;
+	opacity: 0.5;
+	background-image:url(../imagenes/f1.png);
+	background-repeat:no-repeat;
+	width: 35px;
+	height:70px;
+}

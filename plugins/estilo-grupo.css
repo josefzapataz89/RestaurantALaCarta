@@ -1,0 +1,49 @@
+label {
+    clear: both;
+    margin-right: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    float: left;
+}
+.rating-f .br-widget a {
+    background: url('img/star.png');
+    width: 24px;
+    height: 24px;
+    display: block;
+    float: left;
+}
+
+.rating-f .br-widget a:hover,
+.rating-f .br-widget a.br-active,
+.rating-f .br-widget a.br-selected {
+    background-position: 0 24px;
+}
+.estrella{
+    background: #687A00;
+    border-top: 1px solid #99cc00;
+    background: -webkit-gradient(linear, left top, left bottom, from(#99cc00), to(#687a00));
+    background: -webkit-linear-gradient(top, #99cc00, #687a00);
+    background: -moz-linear-gradient(top, #99cc00, #687a00);
+    background: -ms-linear-gradient(top, #99cc00, #687a00);
+    background: -o-linear-gradient(top, #99cc00, #687a00);
+    padding: 6.5px 13px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: #3d1c00;
+    font-size:16px;
+    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+    width: 30%;
+    height: 40px;
+}
+
+.btn-atras{
+    text-align: right;
+    margin-right: 20px;
+}
