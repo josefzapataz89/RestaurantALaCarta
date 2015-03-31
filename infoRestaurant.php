@@ -1,10 +1,10 @@
 <?php 
 session_start();
 include"database.php";
-include('conex.php');
-$link=Conectar();
 
-if($_GET["id"]){
+$id_search = $_GET["id"];
+
+if($id_search){
 
         $query_pag_data = "SELECT
                             restaurante.id as id,
@@ -20,7 +20,7 @@ if($_GET["id"]){
                             multimedia
                         WHERE
                             restaurante.id = multimedia.Restaurante_id &&
-                                restaurante.id = ".$_GET['id'];
+                                restaurante.id = ".$id_search;
 
 
         $accion = mysql_query($query_pag_data) or die('MySql Error' . mysql_error());
@@ -42,19 +42,18 @@ else{
 
 
    if(isset($_POST["nombreReserva"]) && isset($_POST["cantidadReserva"]) && isset($_POST["fechaReserva"]) && isset($_POST["horaReserva"])){
-       $idRest = $_GET["id"];
+       $idRest = $id_search;
        $idUsr =$_SESSION['id'];
        $cantidad = $_POST["cantidadReserva"];
-       $nombre = $_POST["nombreReserva"];   
+       $nombre = $_POST["nombreReserva"];
        $fechaHora = date_create($_POST["fechaReserva"]." ".$_POST["horaReserva"]);
        $fechaHora = $fechaHora->format('Y-m-d H:i:s');
 
        $consulta = "SELECT sum(cantidad) as Cantidad, (SELECT capacidad FROM restaurante WHERE id = ".$idRest.") as Capacidad FROM reserva WHERE fecha_reserva = '".$fechaHora."' and status = 1 and restaurante_id = ".$idRest;
-       $cons = mysql_query($consulta);   
+       $cons = mysql_query($consulta);
        $consultaReserva = mysql_fetch_row($cons);
        if($consultaReserva[0]==null){ $consultaReserva[0] = 0;}
        $disponibles = $consultaReserva[1] - $consultaReserva[0];
-      
        if($disponibles >= $cantidad){
           $sql = "INSERT INTO reserva (nombre, fecha_reserva, cantidad, restaurante_id, usuario_id, status) VALUES ('".$nombre."', '".$fechaHora."', '".$cantidad."', '".$idRest."', '".$idUsr."', 1)";         
           if(mysql_query($sql)){
@@ -63,8 +62,17 @@ else{
         }
         if($disponibles>0 && $disponibles < $cantidad){  echo "<script>alert('Lo sentimos, solo hay ".$disponibles." puestos disponibles');</script>"; }  
         if($disponibles == 0){ echo "<script>alert('Lo sentimos, en este momento no hay disponibilidad');</script>"; } 
-   }   
+   }
 
+if(isset($_POST['coment']) && isset($_POST['rating']) )
+{
+    $calificacion = $_POST['rating'];
+    $comentario = $_POST['coment'];
+    $idUser = $_SESSION["id"];
+    $idResta = $_GET["id"];
+    $consulta = "INSERT INTO comentario (comentario, calificacion, usuario_id, restaurante_id) VALUES ('$comentario', $calificacion, $idUser,".$_GET["id"].")";
+    mysql_query($consulta);
+}
 
  ?>
 
@@ -73,9 +81,9 @@ else{
  <head>
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
          <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
-         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />  
-         <link type="text/css" rel="stylesheet" href="datepicket.css" />       
-         <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />       
+         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />
+         <link type="text/css" rel="stylesheet" href="datepicket.css" />
+         <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />
          <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
          <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
           type="text/css"/>
@@ -158,10 +166,10 @@ line-height:0px;
           <li><a href="Reservas.php"><span>Reservas</span></a></li>
           <li><a href="top5.php"><span>Top 5</span>
                   </a></li></ul></div>
-                  
-</div> 
 
-<div id="cuerpo" style=" margin-top: 20px !important;"> 
+</div>
+
+<div id="cuerpo" style=" margin-top: 20px !important;">
     <div id="barra_inferior">
         <p class="interlineado2">&nbsp;</p>
         <p class="interlineado2" align="center"><a href="#">Nosotros</a> | <a href="#">@alacarta5</a> | <a href="#">www.facebook.com/alacarta</a></p>
@@ -171,7 +179,7 @@ line-height:0px;
        <div class="informacion">
                <div class="imgperfil">
                        <img width="300px" height="300px" src="imagesRestaurant/<?php echo $imagen; ?>" alt="imagesRestaurant/<?php echo $imagen; ?>">
-                       
+
                </div>
                <div class="info">
                 <h2>Informacion de Perfil</h2>
@@ -184,10 +192,10 @@ line-height:0px;
                </div>
        </div>
        <br />
-        
+
        <a data-toggle="modal" href="modalCalificar.php" data-target="#myCalificacion" title="Calificanos" class="button"  style="margin-left: 5px;"><span>Calificar</span></a>
-        
-       
+
+
        <a data-toggle="modal" href="reserva.php" data-target="#myModal" title="Contact Us" class="button"  style="margin-left: 5px;"><span>Realizar Reservación</span></a>
        <br />
        <div class="btn-atras">

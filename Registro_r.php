@@ -51,10 +51,6 @@ line-height:0px;
 </style></head>
 <body>
 
-
-
-
-
 <?php 
 include('conex.php');
 	$link=Conectar();
