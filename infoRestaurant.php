@@ -185,17 +185,9 @@ line-height:0px;
        </div>
        <br />
         
-        <div class="input select rating-f estrella">
-          <label for="calificacion">Calificanos  </label>          
-          <select id="calificacion" name="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
-       <br />
+       <a data-toggle="modal" href="modalCalificar.php" data-target="#myCalificacion" title="Calificanos" class="button"  style="margin-left: 5px;"><span>Calificar</span></a>
+        
+       
        <a data-toggle="modal" href="reserva.php" data-target="#myModal" title="Contact Us" class="button"  style="margin-left: 5px;"><span>Realizar Reservación</span></a>
        <br />
        <div class="btn-atras">
@@ -215,6 +207,16 @@ line-height:0px;
   </div>
 </div>
 <!-------------------------------------------------------------------------------------------------------------->   
+
+<!---------------------------------------- Calificación -------------------------------------------------------->
+<div class="modal fade" id="myCalificacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+<!------------------------------------- Fin Calificación -------------------------------------------------------->
 
 <script src="bootstrap.min.js"></script>
 <script src="./plugins/jquery.barrating.js"></script>
