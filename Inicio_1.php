@@ -84,7 +84,7 @@ line-height:0px;
           <li class="flecha"><a href="Inicio_1.php"><span class="Estilo2">Inicio</span></a>
           <div id="punta"></div></li>
           <li><a href="Restaurantes.php"><span>Restaurantes</span></a></li>
-          <li><a href="Categorias.php"><span>Categorias</span></a></li>
+          <li><a href="categorias.php"><span>Categorias</span></a></li>
           <li><a href="Reservas.php"><span>Reservas</span></a></li>
           <li><a href="top5.php"><span>Top 5</span></a></li></ul></div></div>
 
@@ -121,7 +121,7 @@ line-height:0px;
                                                                         $result = mysql_query("select distinct m.ruta ruta, p.nombre nombre, p.descripcion descripcion, r.nombre nom
 from plato p join multimedia m
 on (p.id = m.plato_id)
-join Restaurante r
+join restaurante r
 on(r.id = m.restaurante_id)
 order by m.fecha desc
 limit 4");

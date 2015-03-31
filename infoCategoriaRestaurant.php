@@ -116,7 +116,7 @@ line-height:0px;
           <li><a href="Inicio_1.php"><span>Inicio</span></a></li>
           <li class="flecha"><a href="Restaurantes.php"><span class="Estilo2">Restaurantes</span></a>
                   <div id="punta"></div></li>
-          <li><a href="Categorias.php"><span>Categorias</span></a></li>
+          <li><a href="categorias.php"><span>Categorias</span></a></li>
           <li><a href="#"><span>Favoritos</span></a></li>
           <li><a href="top5.php"><span>Top 5</span>
                   </a></li></ul></div>
