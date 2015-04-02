@@ -34,12 +34,14 @@ $consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SE
               $suma=0;
               $contador=0;
               $comentarios;
+              $fecha;
               while($campos = mysql_fetch_array($consulta))
               {
                 $contador=$contador+1;
                 $calificacion = $campos[2];
                 $usuario1 = $campos[3];
                 $suma=$suma+$campos[2];
+                $fecha=$campos[5];
 
               }
               $votos = $suma/$contador;

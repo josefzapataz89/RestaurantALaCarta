@@ -30,7 +30,7 @@ else
 }
 }
 
-$consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SESSION["id"]. "'");
+$consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SESSION["id"]. "' order by fecha");
               $suma=0;
               $contador=0;
               $comentarios;
@@ -160,24 +160,26 @@ line-height:0px;
                <div class="info">
                 <h2>Comentarios</h2>
                 <p>
-                       <?php 
+                    <?php 
 
-                        $consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SESSION["id"]. "'");              
-                        while($campos = mysql_fetch_array($consulta))
-                        {
-                          $consulta2=mysql_query("select * from usuario where id= '" .$campos[3]. "'"); 
-                          $usuario="";
-                          while($campos2 = mysql_fetch_array($consulta2))
-                          {
-                            $usuario = $campos2[1];
-                          }
-                          echo $usuario." te ha dado ".$campos[2]." estrellas ";
-                          echo "<br>";
-                          echo "comentario: ".$campos[1];
-                          echo "<br>";
-                        } 
+                    $consulta = mysql_query("select * from comentario where restaurante_id= '" .$_SESSION["id"]. "' ORDER BY id desc");              
+                    while($campos = mysql_fetch_array($consulta))
+                    {
+                      $consulta2=mysql_query("select * from usuario where id= '" .$campos[3]. "'"); 
+                      $usuario="";
+                      while($campos2 = mysql_fetch_array($consulta2))
+                      {
+                        $usuario = $campos2[1];
+                      }
+                      ?><p id="nombre"><?php echo $usuario ?></p><p id="texto">
+                      <?php echo "te ha calificado ".$campos[2]."estrellas - ".$campos[5];?></p><p id="comentario">  
+                      <?php
 
-                      ?>
+                      echo $campos[1];
+
+                    } 
+
+                    ?></p>
                 </p>
 
                </div>

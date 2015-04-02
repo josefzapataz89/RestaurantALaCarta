@@ -1001,3 +1001,33 @@ overflow: hidden;
 	margin: auto;
 	float: right;
 }
+
+/************************************COMENTARIOS*************************************************/
+
+#comentario
+{
+	color: black;
+}
+#fecha
+{
+ font-family:"serif";
+font-size:12pt;
+font-style:italic;
+color: grey;
+/*background-color: #d8da3d*/
+}
+#nombre
+{
+font-family:"Tahoma", "Geneva", sans-serif;
+text-transform: capitalize;
+font-style:italic;
+font-size: 150%;
+}
+
+#texto
+{
+font-family:"Arial";
+font-weight: light;	
+text-transform: capitalize;
+
+}
