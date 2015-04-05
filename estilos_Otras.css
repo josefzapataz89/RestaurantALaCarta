@@ -504,11 +504,7 @@ top:-40px;
 	font-weight: bold;
 }
 
-/*
-Desde aqui modificacionse de ZAPATA
- */
 #fondo_restaurantes{
-	
 	height:450px;
 	width:830px;
 	background-color:rgba(61,28,0,0.3);
@@ -523,26 +519,24 @@ Desde aqui modificacionse de ZAPATA
 	font-size:13px;
 }
 #fondo_restaurantes .informacion{
-        width: 600px;
+        width: 100%;
         height: 300px;
 }
 #fondo_restaurantes .informacion .imgperfil{
-        width: 300px;
+        width: 40%;
         height: 300px;
         float: left;
         position: inherit;
 }
 #fondo_restaurantes .informacion .info{	
-	width: 280px;
-	height: 300px;
-	float: right;
+	width: 55%;
+	height: 100%;
+	float: left;
 	position: inherit;
 	font-family: arial black;
 	font-size: 14px;
+	overflow: auto;
 }
-/*
-Hasta aqui modificaciones de ZAPATA (creo)
- */
 
 #pags{
 	width:200px;

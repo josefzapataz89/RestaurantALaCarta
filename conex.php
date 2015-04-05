@@ -1,6 +1,6 @@
 <?php 
 function Conectar(){
- if($link=mysql_connect("localhost","root"))
+ if($link=mysql_connect("localhost","root","root"))
  {
      if(mysql_select_db("restaurante",$link))
 	 {
