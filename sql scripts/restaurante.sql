@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 31-03-2015 a las 07:50:42
--- Versión del servidor: 5.5.41-0ubuntu0.14.04.1
--- Versión de PHP: 5.5.9-1ubuntu4.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-04-2015 a las 07:56:45
+-- Versión del servidor: 5.6.16
+-- Versión de PHP: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   PRIMARY KEY (`id`),
   KEY `fk_comentario_usuario1_idx` (`usuario_id`),
   KEY `fk_comentario_restaurante1_idx` (`restaurante_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `comentario`
@@ -75,7 +75,8 @@ INSERT INTO `comentario` (`id`, `comentario`, `calificacion`, `usuario_id`, `res
 (8, 'perros, excelente', 4, 3, 14, '2015-03-31 11:07:07'),
 (9, 'perro', 3, 5, 14, '2015-03-31 12:08:51'),
 (10, 'apesta a culo', 5, 5, 14, '2015-03-31 12:14:49'),
-(11, 'dilcioooo', 4, 4, 14, '2015-03-31 12:18:09');
+(11, 'dilcioooo', 4, 4, 14, '2015-03-31 12:18:09'),
+(12, 'lsdlkasdÃ±lk slkdlksj skdmlks ckns', 2, 3, 14, '2015-04-16 01:49:16');
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `multimedia` (
   PRIMARY KEY (`id`),
   KEY `fk_multimedia_restaurante1_idx` (`restaurante_id`),
   KEY `fk_multimedia_plato1_idx` (`plato_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Volcado de datos para la tabla `multimedia`
@@ -116,7 +117,11 @@ INSERT INTO `multimedia` (`id`, `ruta`, `fecha`, `restaurante_id`, `plato_id`) V
 (21, 'Restaurante_14.jpg', '2015-02-20 15:24:13', 14, NULL),
 (25, 'Restaurante_14_Plato_8.jpg', '2015-02-20 15:41:55', 14, 8),
 (26, 'Restaurante_14_Plato_9.jpg', '2015-02-20 16:02:09', 14, 9),
-(27, 'Restaurante_14_Plato_10.jpg', '2015-02-20 16:27:06', 14, 10);
+(27, 'Restaurante_14_Plato_10.jpg', '2015-02-20 16:27:06', 14, 10),
+(28, 'Restaurante_14_Plato_11.JPG', '2015-04-17 01:17:50', 14, 11),
+(29, 'Restaurante_14_Plato_12.JPG', '2015-04-17 01:39:43', 14, 12),
+(30, 'Restaurante_14_Plato_13.JPG', '2015-04-17 01:41:23', 14, 13),
+(31, 'Restaurante_14_Plato_15.png', '2015-04-17 01:56:41', 14, 15);
 
 -- --------------------------------------------------------
 
@@ -129,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `plato` (
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Volcado de datos para la tabla `plato`
@@ -141,7 +146,12 @@ INSERT INTO `plato` (`id`, `nombre`, `descripcion`) VALUES
 (7, 'pescado frito', 'el mejor pescado'),
 (8, 'pollo', 'pollo'),
 (9, 'carnes', 'carnes'),
-(10, 'carne molida', 'jhj');
+(10, 'carne molida', 'jhj'),
+(11, 'plato de prueba', 'platode prueba1'),
+(12, 'platoPrueba 3', 'plato de prueba 3'),
+(13, 'plato de prueba 4', 'plato de prueba 4'),
+(14, 'plato 5', 'plato 5'),
+(15, 'prueba 7', 'prueba 7');
 
 -- --------------------------------------------------------
 
@@ -157,20 +167,23 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `restaurante_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
   `status` int(1) NOT NULL,
+  `codigo` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_reserva_restaurante1_idx` (`restaurante_id`),
   KEY `fk_reserva_usuario1_idx` (`usuario_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Volcado de datos para la tabla `reserva`
 --
 
-INSERT INTO `reserva` (`id`, `nombre`, `fecha_reserva`, `cantidad`, `restaurante_id`, `usuario_id`, `status`) VALUES
-(11, 'jorge', '2015-02-20 16:28:25', 4, 14, 3, 0),
-(12, 'Wilfor ', '2015-02-20 17:32:24', 5, 14, 3, 1),
-(13, 'jorge', '2015-02-20 17:37:06', 97, 14, 3, 1),
-(14, 'wilfor', '2015-02-20 17:37:32', 5, 14, 3, 1);
+INSERT INTO `reserva` (`id`, `nombre`, `fecha_reserva`, `cantidad`, `restaurante_id`, `usuario_id`, `status`, `codigo`) VALUES
+(26, 'jorge', '2015-04-17 14:00:00', 5, 14, 3, 1, 'R14U3R28222'),
+(27, 'jorge', '2015-04-18 02:00:00', 8, 14, 3, 1, 'R14U3C1903'),
+(28, 'jorge', '2015-04-22 02:30:00', 5, 14, 3, 1, 'R14U3C11388'),
+(29, 'jorge', '2015-04-22 07:00:00', 3, 14, 3, 1, 'R14U3C26885'),
+(30, 'jorge', '2015-04-28 17:30:00', 10, 14, 3, 1, 'R14U3C1183'),
+(31, 'jorge', '2015-04-29 01:30:00', 6, 14, 3, 1, 'R14U3C6636');
 
 -- --------------------------------------------------------
 
