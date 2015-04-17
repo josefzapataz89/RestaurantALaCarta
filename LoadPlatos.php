@@ -48,7 +48,7 @@ while ($row = mysql_fetch_array($result_pag_data)) {
     $htmlimg=htmlentities($row['ruta']);
     //header("Content-type: .gif");
     $destino = '$DOCUMENT_ROOT/../imagesRestaurant/'.$htmlimg;
-    $msg .= "<div class='item'> <div class='foto'><img src='".$destino."' alt='".$destino."'/></div> <div class='texto'  onclick='mostrar(".$row['id'].")'><p>".$htmlmsg."</p></div> </div>";
+    $msg .= "<div class='item platos animated fadeInUp'> <div class='foto'><img src='".$destino."' alt='".$destino."'/></div> <div class='texto'  onclick='mostrar(".$row['id'].")'>".$htmlmsg."</div> </div>";
 }
 $msg = "<div class='data'>" . $msg . "</div>"; // Content for Data
 

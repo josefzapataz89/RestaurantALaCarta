@@ -18,6 +18,8 @@ if($_SESSION["tipo_usuario"]!="1")
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="animate.css" />
+<script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 <title>Inicio</title>
 <style type="text/css">
 
@@ -37,13 +39,21 @@ if($_SESSION["tipo_usuario"]!="1")
    
  
 echo "<form action=\"\" method=\"post\"> \n";
-
-while ($row = mysql_fetch_row($query)){  
- 
-echo "<input type=\"checkbox\" name=\"".'reserva[]'."\" value=\"".$row[0]."\">Restaurante: ".$row[8].'<br>A nombre de: '.$row[1].'<br>Fecha-Hora: '.$row[2].'<br>Cantidad de personas: '.$row[3]."<br><br>";
+if (mysql_num_rows($query) > 0) {
+  echo "<input type='submit' class='button tam_button' style='margin: 1% 0 3px 40%;'  name='cancelar' id='cancelar' value='Cancelar Reserva'><br/>"; 
+}
+while ($row = mysql_fetch_row($query)){   
+      echo "<div class='reser animated zoomIn'>
+                <input type=\"checkbox\" name=\"".'reserva[]'."\" value=\"".$row[0]."\" class='form-control'>
+                    <b>Código: ".$row[7]."<br/></b> 
+                    <b>Restaurante: </b>".$row[9]."<br/>
+                    <b>A nombre de: </b>".$row[1]."<br/>
+                    <b>Fecha: </b>".$row[2]."<br/>
+                    <b>Comensales: </b>".$row[3]."<br/><br/>
+            </div>";
 }  
   
- echo "<input type='submit' name='cancelar' id='cancelar' value='Cancelar Reserva'>";    
+    
 
 echo "</form>";
 
@@ -146,11 +156,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
  <h1 class="h">Restaurantes a la Carta</h1>
 </div>

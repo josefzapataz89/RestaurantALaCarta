@@ -41,13 +41,13 @@ else{
 }
 
 
-   if(isset($_POST["nombreReserva"]) && isset($_POST["cantidadReserva"]) && isset($_POST["fechaReserva"]) && isset($_POST["horaReserva"])){
+   if(isset($_POST["cantidadReserva"]) && isset($_POST["fechaReserva"]) && isset($_POST["horaReserva"])){
        $idRest = $id_search;
        $idUsr =$_SESSION['id'];
        $cantidad = $_POST["cantidadReserva"];
-       $nombre = $_POST["nombreReserva"];
+       $nombre = $_SESSION['nombre_ususario'];
        $fechaHora = date_create($_POST["fechaReserva"]." ".$_POST["horaReserva"]);
-       $fechaHora = $fechaHora->format('Y-m-d H:i:s');
+       $fechaHora = $fechaHora->format('Y-m-d H:i:s');      
 
        $consulta = "SELECT sum(cantidad) as Cantidad, (SELECT capacidad FROM restaurante WHERE id = ".$idRest.") as Capacidad FROM reserva WHERE fecha_reserva = '".$fechaHora."' and status = 1 and restaurante_id = ".$idRest;
        $cons = mysql_query($consulta);
@@ -55,10 +55,17 @@ else{
        if($consultaReserva[0]==null){ $consultaReserva[0] = 0;}
        $disponibles = $consultaReserva[1] - $consultaReserva[0];
        if($disponibles >= $cantidad){
-          $sql = "INSERT INTO reserva (nombre, fecha_reserva, cantidad, restaurante_id, usuario_id, status) VALUES ('".$nombre."', '".$fechaHora."', '".$cantidad."', '".$idRest."', '".$idUsr."', 1)";         
-          if(mysql_query($sql)){
-             echo "<script>alert('Se realizó exitosamente una reserva a nombre de: ".$nombre."');</script>";
-          }
+          $verif = "SELECT count(*) FROM reserva WHERE usuario_id=".$idUsr." AND fecha_reserva = '".$fechaHora."' AND status=1";
+          $res = mysql_query($verif);
+          $verif = mysql_num_rows($res);
+          echo $verif[0];
+          if ($verif[0] < 2) {
+            $codigo = "R".$idRest."U".$idUsr."C".rand();
+            $sql = "INSERT INTO reserva (nombre, fecha_reserva, cantidad, restaurante_id, usuario_id, status, codigo) VALUES ('".$nombre."', '".$fechaHora."', '".$cantidad."', '".$idRest."', '".$idUsr."', 1, '".$codigo."')";         
+            if(mysql_query($sql)){
+               echo "<script> alert('Reserva Exitosa, Codigo: ".$codigo."');</script>";
+            }
+          }else{ echo "<script>alert('".$nombre." ya posee una reserva para el ".$fechaHora."');</script>"; }          
         }
         if($disponibles>0 && $disponibles < $cantidad){  echo "<script>alert('Lo sentimos, solo hay ".$disponibles." puestos disponibles');</script>"; }  
         if($disponibles == 0){ echo "<script>alert('Lo sentimos, en este momento no hay disponibilidad');</script>"; } 
@@ -82,9 +89,17 @@ if(isset($_POST['coment']) && isset($_POST['rating']) )
          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
          <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
          <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />
-         <link type="text/css" rel="stylesheet" href="datepicket.css" />
          <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />
-         <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
+         <link type="text/css" rel="stylesheet" href="jquery.timepicker.css" />
+         <link rel="stylesheet" type="text/css" href="css/datepicker.css" /> 
+         <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" /> 
+         
+         <script type='text/javascript' src='js/jquery-1.7.1.js'></script> 
+         <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>         
+         <script type='text/javascript' src='jquery.timepicker.js'></script>
+         <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
+
          <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
           type="text/css"/>
          <title>Info Restaurante</title>
@@ -146,11 +161,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="Búsqueda..." />
-  </label>
-</div>
+
 <div id="logo">
         <h1 class="h">Restaurantes a la Carta</h1>
 </div>
@@ -183,12 +194,12 @@ line-height:0px;
                </div>
                <div class="info">
                 <h2>Informacion de Perfil</h2>
-                       <p><b>Nombre: </b></p><p><?php echo $nombre; ?></p>
-                       <p><b>Descripcion:</b></p><p><?php echo $descripcion; ?></p>
-                       <p><b>Dirección: </b></p><p><?php echo $direccion; ?></p>
-                       <p><b>Telefono:</b> </p><p><?php echo $telefono; ?></p>
-                       <p><b>Email: </b></p><p><?php echo $email; ?></p>
-                       <p><b>Sitio Web: </b></p><p><?php echo $pagina; ?></p>
+                       <p><b>Nombre: </b><?php echo $nombre; ?></p>
+                       <p><b>Descripcion: </b><?php echo $descripcion; ?></p>
+                       <p><b>Dirección: </b><?php echo $direccion; ?></p>
+                       <p><b>Telefono:</b> <?php echo $telefono; ?></p>
+                       <p><b>Email: </b><?php echo $email; ?></p>
+                       <p><b>Sitio Web: </b><?php echo $pagina; ?></p>
                </div>
        </div>
        <br />
@@ -196,7 +207,7 @@ line-height:0px;
        <a data-toggle="modal" href="modalCalificar.php" data-target="#myCalificacion" title="Calificanos" class="button"  style="margin-left: 5px;"><span>Calificar</span></a>
 
 
-       <a data-toggle="modal" href="reserva.php" data-target="#myModal" title="Contact Us" class="button"  style="margin-left: 5px;"><span>Realizar Reservación</span></a>
+       <a data-toggle="modal" href="reserva.php" data-target="#myModal" title="Realizar Reserva" class="button"  style="margin-left: 5px;"><span>Realizar Reservación</span></a>
        <br />
        <div class="btn-atras">
          <p><a href="Restaurantes.php">Atras</a></p>
@@ -228,11 +239,12 @@ line-height:0px;
 
 <script src="bootstrap.min.js"></script>
 <script src="./plugins/jquery.barrating.js"></script>
+
 <script>
 
     $(function () {
       $('#calificacion').barrating({ showSelectedRating:false });
-    });
+    });   
 
 </script>
 

@@ -537,6 +537,14 @@ top:-40px;
 	font-size: 14px;
 	overflow: auto;
 }
+#fondo_restaurantes .informacion .info2{	
+	width: 60%;
+	height: 200%;
+	float: right;
+	font-family: arial black;
+	font-size: 14px;
+	overflow: auto;
+}
 
 #pags{
 	width:200px;
@@ -1024,4 +1032,84 @@ font-family:"Arial";
 font-weight: light;	
 text-transform: capitalize;
 
+}
+
+.actualizacion{
+	width: 95% !important;
+	height:auto;
+	background: #FFF;
+	opacity: 0.8;
+    filter: alpha(opacity=90); 
+	border-bottom:none;
+	background-position:0 0 0 22px;
+	border-radius:5px;
+	box-shadow:#000 0 3px 7px 0;
+	z-index:1;	
+}
+.actualizacion img{
+	width: 100%;
+	height: 100%;
+}
+.reser{
+	width: 32%;
+	height: 95px;
+	background: #FFF;
+	background-image:url(imagenes/Inicio/Imagencabecera.png);	
+	border-bottom:none;
+	background-position:0 0 0 22px;
+	border-radius:0px;
+	box-shadow:#000 0 3px 7px 0;
+	float: left;
+	color: 000;
+	margin: 1% 0 0 1%;
+	padding: 10px 1px 1px 0 !important;
+}
+.reser input[type=checkbox]{
+	width: 10%;
+	height: 100%;
+	float: left;
+}
+.platos{
+	width: 32%;
+	height: 100px;
+	background: #000;
+	background-image:url(imagenes/Inicio/Imagencabecera.png);	
+	border-bottom:none;
+	background-position:0 0 0 22px;
+	border-radius:0px;
+	box-shadow:#000 0 3px 7px 0;
+	float: left;
+	color: #FFF;
+	margin: 0 2px 5px 0;
+}
+.platos .foto{
+	height: 78% !important;
+	width: 100%;
+}
+.platos .foto img{
+	width: 100% !important;
+	height: 100% !important;
+}
+.platos .texto{
+	height: 22%;
+	font-size: 16px !important;
+	font-weight: bold;
+	padding-top: 27px !important;
+}
+
+.comen{
+	width: 97%;
+	height: auto;
+	background: #FFF;
+	background-image:url(imagenes/Inicio/Imagencabecera.png);	
+	border-bottom:none;
+	opacity: 0.6;
+    filter: alpha(opacity=60); 
+	background-position:0 0 0 22px;
+	border-radius:0px;
+	box-shadow:#000 0 3px 7px 0;
+	float: left;
+	color: #000;
+	margin-bottom: 5px;
+	padding: 0px 1px 1px 10px !important;
 }

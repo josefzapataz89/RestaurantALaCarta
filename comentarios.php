@@ -127,11 +127,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="Búsqueda..." />
-  </label>
-</div>
+
 <div id="logo">
 	<h1 class="h">Restaurantes a la Carta</h1>
 </div>
@@ -153,11 +149,22 @@ line-height:0px;
 <p class="interlineado2" align="center"><a href="#">Nosotros</a> | <a href="#">@alacarta5</a>| <a href="#">www.facebook.com/alacarta</a></p></div>
     <div id="fondo_restaurantes">
 
-       <div class="informacion">
-               <div class="imgperfil">
+       <div class="informacion" style="height: 50% !important;">
+               <div class="imgperfil" style="width: 33% !important;">
                        <img width="300px" height="300px" src="imagesRestaurant/<?php echo $imagen; ?>" alt="imagesRestaurant/<?php echo $imagen; ?>">
+               
+                      <div class="input select rating-f estrella" style="width:100%;">
+                        <label for="calificacion">Calificación </label>          
+                        <select id="calificacion" name="rating" >
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                          </select>
+                      </div>
                </div>
-               <div class="info">
+               <div class="info2" style="width: 61% !important;">
                 <h2>Comentarios</h2>
                 <p>
                     <?php 
@@ -171,15 +178,19 @@ line-height:0px;
                       {
                         $usuario = $campos2[1];
                       }
-                      ?><p id="nombre"><?php echo $usuario ?></p><p id="texto">
-                      <?php echo "te ha calificado ".$campos[2]."estrellas - ".$campos[5];?></p><p id="comentario">  
+                      ?><div class="comen"><p id="nombre"><?php echo $usuario ?></p><p id="texto">
+                      <?php echo "te ha calificado ".$campos[2]." estrellas - ".$campos[5];?></p><p id="comentario">  
                       <?php
 
                       echo $campos[1];
 
+                      ?></p>
+                      </div>
+                      <?php
+
                     } 
 
-                    ?></p>
+                    ?>
                 </p>
 
                </div>
@@ -188,16 +199,7 @@ line-height:0px;
 
 
 
-               <div class="input select rating-f estrella">
-          <label for="calificacion">Calificación </label>          
-          <select id="calificacion" name="rating" >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
+       
 
 
 </div>

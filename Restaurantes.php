@@ -19,6 +19,8 @@ if($_SESSION["tipo_usuario"]!="1")
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="animate.css" />
+<script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 <title>Restaurantes</title>
 <style type="text/css">
 <!--
@@ -222,11 +224,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
         <h1 class="h">Restaurantes a la Carta</h1>
 </div>

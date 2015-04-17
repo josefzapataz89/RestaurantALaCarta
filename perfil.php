@@ -75,13 +75,15 @@ $accion= mysql_fetch_array($result);
 
                 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
          <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
       
-         <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />       
+         <link type="text/css" rel="stylesheet" href="plugins/estilo-grupo.css" />  
+         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />   
+         <link rel="stylesheet" type="text/css" href="animate.css" />
          <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
          <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"
           type="text/css"/>
@@ -139,29 +141,26 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="Búsqueda..." />
-  </label>
-</div>
+
 <div id="logo">
 	<h1 class="h">Restaurantes a la Carta</h1>
 </div>
 
-<div id="menu">
+<div id="menu" style=" margin-top: 0 !important;">
 
-        <ul>
+        <ul style=" margin-top: 24px !important;">
           <!-- CSS Tabs -->
           <li class="flecha"><a href="perfil.php"><span class="Estilo2">Perfil</span></a><div id="punta"></div></li>
           <li ><a href="platos_usuario.php"><span>Platos</span></a></li>
-          <li><a href="NuevoPlato.php"><span>Nuevo plato</span></a></li>
+          <li><a data-toggle="modal" href="newplato.php" data-target="#myPlato" title="Agregar Nuevo Plato"><span>Nuevo Plato</span></a></li>
+
         </ul>
 		  
 </div>
 		  
 </div> 
 
-<div id="cuerpo"> 
+<div id="cuerpo" style=" margin-top: 20px !important;"> 
 <div id="barra_inferior">
 <p class="interlineado2">&nbsp;</p>
 <p class="interlineado2" align="center"><a href="#">Nosotros</a> | <a href="#">@alacarta5</a>| <a href="#">www.facebook.com/alacarta</a></p></div>
@@ -201,6 +200,7 @@ line-height:0px;
   <div id="boton_e"><input name="comentarios" type="submit" class="button tam_button" value="Comentarios" style="border:none" /></div>
 </form>
 
+
            </div>
 
 
@@ -208,6 +208,20 @@ line-height:0px;
 </div>
 
 </div>
+
+<!----------------------------------------- NUEVO PLATO ---------------------------------------------------------->    
+<div class="modal fade" id="myPlato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+<!-------------------------------------------------------------------------------------------------------------->   
+
+
+
+
+<script src="bootstrap.min.js"></script>
 <script src="./plugins/jquery.barrating.js"></script>
 <script>
 

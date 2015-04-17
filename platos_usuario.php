@@ -38,7 +38,7 @@ else
 <head>
          <meta charset="UTF-8">
          <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
-         <!--link type="text/css" rel="stylesheet" href="bootstrap.min.css" />  -->
+         <link type="text/css" rel="stylesheet" href="bootstrap.min.css" />  
          <script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 
 <title>Restaurantes</title>
@@ -141,8 +141,6 @@ line-height:0px;
     #container .pagination{
         width: 100%;
         height: 25px;
-        top: 400px;
-        position: absolute;
     }
     #container .pagination ul li{
         list-style: none;
@@ -241,36 +239,33 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
         <h1 class="h">Restaurantes a la Carta</h1>
 </div>
 
-<div id="menu">
+<div id="menu" style=" margin-top: 0 !important;">
 
-        <ul>
+        <ul style=" margin-top: 24px !important;">
           <!-- CSS Tabs -->
           <li ><a href="perfil.php"><span>Perfil</span></li></a>
           <li class="flecha"><a href="platos_usuario.php"><span span class="Estilo2">Platos</span></a><div id="punta"></div></li>
-          <li><a href="NuevoPlato.php"><span >Nuevo plato</span></a></li></ul>
+          <li><a data-toggle="modal" href="newplato.php" data-target="#myPlato" title="Agregar Nuevo Plato"><span>Nuevo Plato</span></a></li>
+        </ul>
       
       </div>
                   
 </div> 
 
-<div id="cuerpo"> 
+<div id="cuerpo" style=" margin-top: 20px !important;"> 
     <div id="barra_inferior">
         <p class="interlineado2">&nbsp;</p>
-        <p class="interlineado2" align="center"><a href="#">Nosotros</a> | <a href="#">@alacarta5</a> | <a href="#">www.facebook.com/alacarta</a></p>
+        
     </div>
     
     <div id="fondo_restaurantes">
         <div id="loading"></div>
-        <div id="container">
+        <div id="container" style="overflow: auto;">
             <div class="data">
             </div>
             <div class="pagination"></div>
@@ -279,5 +274,15 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 
 </div>
 </div>
+
+<!----------------------------------------- NUEVO PLATO ---------------------------------------------------------->    
+<div class="modal fade" id="myPlato" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+<!-------------------------------------------------------------------------------------------------------------->
+<script src="bootstrap.min.js"></script>
 </body>
 </html>

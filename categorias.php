@@ -22,7 +22,7 @@ if($_SESSION['nombre_ususario']=="")
   function listarCategorias()
   {
     $query = mysql_query("SELECT * FROM categoria");
-    echo "<select class='form-control drops' name='categoria_seleccionada' id='categoria_seleccionada'>";
+    echo "<select class='sel_categoria' name='categoria_seleccionada' id='categoria_seleccionada'>";
     echo "<option value='0'>Seleccione una categoria</option>";
     while($result = mysql_fetch_row($query))
     {
@@ -37,6 +37,8 @@ if($_SESSION['nombre_ususario']=="")
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="estilos_Otras2.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="animate.css" />
+<script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 <title>Categorias</title>
 <style type="text/css">
 <!--
@@ -235,11 +237,7 @@ color:#3D1C00;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
 	<h1 class="h">Restaurantes a la Carta</h1>
 </div>

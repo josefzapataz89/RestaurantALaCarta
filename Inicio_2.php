@@ -3,7 +3,7 @@ session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
 <title>Inicio</title>
 <style type="text/css">
@@ -50,11 +50,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
  <h1 class="h">Restaurantes a la Carta</h1>
 </div>
@@ -67,7 +63,7 @@ line-height:0px;
           <div id="punta"></div></li>
           <li><a href="Restaurantes.php"><span>Restaurantes</span></a></li>
           <li><a href="Categorias.php"><span>Categorias</span></a></li>
-          <li><a href="#"><span>Favoritos</span></a></li>
+          <li><a href="Reservas.php"><span>Reservas</span></a></li>
           <li><a href="top5.php"><span>Top 5</span></a></li></ul></div>
 </div>
 
@@ -80,18 +76,19 @@ line-height:0px;
 <div id="cuerpo_izquierdo">
 
 
-<div class="letrasubmenu" id="submenu_noseleccionado" onclick="window.location = 'Inicio_1.php';"><p>&nbsp;</p><p>Actualizaciones</p><p> Recientes</p></div>
+<a href="Inicio_1.php"><div class="letrasubmenu" id="submenu_noseleccionado" style="font-family:Arial;"><p>&nbsp;</p><p>Actualizaciones</p><p> Recientes</p></div></a>
 <div id="puntasubmenu2"></div>
 <div id="ezquinasubmenu2"></div>
 
-<div class="letrasubmenu" id="submenu_seleccionado2"><p>&nbsp;</p>
-<p>Lo m&aacute;s nuevo</p></div>
-<div id="puntasubmenu"></div>
-<div id="ezquinasubmenu"></div>
+<a href="#"><div class="letrasubmenu" id="submenu_seleccionado2"><p>&nbsp;</p>
+  <p style="font-family:Arial;">Lo m&aacute;s nuevo</p></div>
+  <div id="puntasubmenu"></div>
+  <div id="ezquinasubmenu"></div>
 </div>
+</a>
 
 <div id="cuerpo_derecho">
-<div id="titulo">Restaurantes</div>
+<div id="titulo">Últimos restaurantes registrados</div>
 <div id="cuerpo_derecho_tabla">
   <table width="96%" height="325" border="0">
     <tr>

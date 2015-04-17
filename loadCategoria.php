@@ -38,7 +38,7 @@ while ($row = mysql_fetch_array($result_pag_data)) {
     $htmlmsg=htmlentities($row['nombre']);
     $htmlimg=htmlentities($row['ruta']);
     header("Content-type: .gif");
-    $msg .= "<div class='item'> <div class='foto'><img src='imagesRestaurant/".$htmlimg."' alt='imagesRestaurant/".$htmlimg."'/></div> <div class='texto'  onclick='mostrar(".$row['id'].")'><p><a href='infoCategoriaRestaurant.php?id=".$row['id']."'>".$htmlmsg."</a></p></div> </div>";
+    $msg .= "<div class='item'> <div class='foto animated zoomIn'><a href='infoRestaurant.php?id=".$row['id']."'><img src='imagesRestaurant/".$htmlimg."' alt='imagesRestaurant/".$htmlimg."'/></a></div> <div class='texto'  onclick='mostrar(".$row['id'].")'><p><a href='infoRestaurant.php?id=".$row['id']."'><h3>".$htmlmsg."</h3></a></p></div> </div>";
 }
 $msg = "<div class='data'>" . $msg . "</div>"; // Content for Data
 

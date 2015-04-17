@@ -70,11 +70,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
  <h1 class="h">Restaurantes a la Carta</h1>
 </div>
@@ -86,7 +82,7 @@ line-height:0px;
           <li><a href="Inicio_1.php"><span>Inicio</span></a></li>
           <li><a href="Restaurantes.php"><span>Restaurantes</span></a></li>
           <li><a href="Categorias.php"><span>Categorias </span></a></li>
-          <li><a href="#"><span>Favoritos</span></a></li>
+          <li><a href="Reservas.php"><span>Reservas</span></a></li>
           <li class="flecha"><a href="top5.php"><span class="Estilo2">Top 5</span>
 		  </a><div id="punta"></div></li></ul></div>
 		  

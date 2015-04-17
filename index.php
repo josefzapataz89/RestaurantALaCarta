@@ -341,7 +341,7 @@ else{
 							<div id="direccion_r"><input type="text" placeholder="Dirección *" name="direccion" class="letras_ini" style="border:none"  size="32"/></div>
 						</div>	
 						<div id="reg_telf">
-							<div id="telf_r"><input type="tel" pattern="[0-9]{11}" name="telf"  placeholder="Número Telefónico" class="letras_ini" style="border:none"  size="32"/></div>
+							<div id="telf_r"><input type="tel" pattern="[0-9]{11}" name="telf"  placeholder="Número Telefónico (solo números)" class="letras_ini" style="border:none"  size="32"/></div>
 						</div>
 			        	<div class="reg_extra">
 							<div id="reg_desc">&nbsp;<input type="text" name="descripcion"  placeholder="Descripción *" class="letras_ini" style="border:none"  size="32"/></div>

@@ -19,6 +19,8 @@ if($_SESSION["tipo_usuario"]!="1")
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="estilos_Otras.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="animate.css" />
+<script type='text/javascript' src='js/jquery-1.7.1.js'></script>
 <title>Inicio</title>
 <style type="text/css">
 <!--
@@ -68,11 +70,7 @@ line-height:0px;
 
 <div id="Eizquierda"></div>
 <div id="Ederecha"></div>
-<div id="busqueda">
-  <label>
-    <input type="text" name="textfield" id="textfield" value="B&uacute;squeda..." />
-  </label>
-</div>
+
 <div id="logo">
  <h1 class="h">Restaurantes a la Carta</h1>
 </div>
@@ -96,19 +94,19 @@ line-height:0px;
 
 <div id="cuerpo_izquierdo">
 
-<div class="letrasubmenu" id="submenu_seleccionado"><p>&nbsp;</p><p>Actualizaciones</p><p> Recientes</p></div>
+<a href="#" style="font-family:Arial;"><div class="letrasubmenu" id="submenu_seleccionado"><p>&nbsp;</p><p>Actualizaciones</p><p> Recientes</p></div></a>
 <div id="puntasubmenu3"></div>
 <div id="ezquinasubmenu3"></div>
 
-<div class="letrasubmenu" id="submenu_noseleccionado" onclick="window.location = 'Inicio_2.php';"><p>&nbsp;</p>
+<a href="Inicio_2.php"  style="font-family:Arial;"><div class="letrasubmenu" id="submenu_noseleccionado"><p>&nbsp;</p>
 <p>Lo m&aacute;s nuevo</p>
-</div>
+</div></a>
 <div id="puntasubmenu2"></div>
 <div id="ezquinasubmenu2"></div>
 </div>
 
 <div id="cuerpo_derecho">
- <table  class="displayy" id="tmaterial" width="95%" align="center">
+ <table  class="displayy" id="tmaterial" width="100%" align="center" border="0">
 
                                                                    
                                                                     <tbody>
@@ -130,20 +128,20 @@ limit 4");
 die (mysql_error())) {
                                                                           $hola= "./imagesRestaurant/".$row["ruta"];
 
-                                                                            echo utf8_decode("<tr class='odd'> 
+                                                                            echo utf8_decode("<tr class='actualizacion animated slideInUp'> 
                                       
 
-                            <td style='width:1%;padding:5px;'>
+                            <td style='width:22%;padding:0;'>
 <div style='float:left;'>
 
-<span style='font-weight: light;font-size:10px;color:#FFFFFF'><img src='".$hola."' alt='".$hola."' border='0' width='90px' height='90px'> </span>
+<span style='font-weight: light;font-size:10px;color:#FFFFFF'><img src='".$hola."' alt='".$hola."' border='0'> </span>
 </div>
 </div>
 </div>
                             </td>
-               <td style='width:5%;padding:10px;'>
+               <td style='width:78%;padding:1px 2px 1px 5px;'>
 <div style='float:left;'>
-<span style='font-weight: light;font-size:14px; color:#FFFFFF; font-family:Arial;' >" . $row["nom"].' Ha subido un nuevo plato: '."<br />" . $row["nombre"].': '. $row["descripcion"] ."</span>
+<span style='font-weight: light;font-size:18px; color:#000; font-family:Arial;' ><b>" . $row["nom"].'</b> Ha subido un nuevo plato: '."<br />" . $row["nombre"].': '. $row["descripcion"] ."</span>
 </div>
 </div>
 </div>
