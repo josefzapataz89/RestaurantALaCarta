@@ -172,12 +172,12 @@ line-height:0px;
                </div>
                <div class="info">
                 <h2>Informacion de Perfil</h2>
-                       <p><b>Nombre: </b></p><p><?php echo $nombre; ?></p>
-                       <p><b>Descripcion:</b></p><p><?php echo $descripcion; ?></p>
-                       <p><b>Dirección: </b></p><p><?php echo $direccion; ?></p>
-                       <p><b>Telefono:</b> </p><p><?php echo $telefono; ?></p>
-                       <p><b>Email: </b></p><p><?php echo $email; ?></p>
-                       <p><b>Sitio Web: </b></p><p><?php echo $pagina; ?></p>
+                       <p><b>Nombre: </b><?php echo $nombre; ?></p>
+                       <p><b>Descripcion: </b><?php echo $descripcion; ?></p>
+                       <p><b>Dirección: </b><?php echo $direccion; ?></p>
+                       <p><b>Telefono: </b><?php echo $telefono; ?></p>
+                       <p><b>Email: </b><?php echo $email; ?></p>
+                       <p><b>Sitio Web: </b><?php echo $pagina; ?></p>
 
                </div>
        </div>
